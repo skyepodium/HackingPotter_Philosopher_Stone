@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>해킹포터 - 진짜 스니치 찾기</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div class="header">
+    <p class="title">
+        진짜 스니치 찾기
+    </p>
+    <p>
+        해리포터... 아니 해킹포터,
+    </p>
+    <p>
+        퀴디치 팀에 들어오고 싶다면...
+    </p>
+    진짜 스니치를 <span class="highlight">클릭</span> 해보게
+</div>
+
+<form action="/api/snitch" method="post" id="snitchForm">
+    <input type="hidden" id="snitchValue" name="snitchValue">
+</form>
+
+<!-- <img class="snitch" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e769cc80-4c42-4db6-921d-4583430143c8/d173zxk-796d74c2-ac04-4453-8f26-a55a7f8c67c1.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9lNzY5Y2M4MC00YzQyLTRkYjYtOTIxZC00NTgzNDMwMTQzYzgvZDE3M3p4ay03OTZkNzRjMi1hYzA0LTQ0NTMtOGYyNi1hNTVhN2Y4YzY3YzEuZ2lmIn1dXX0.t7cwvsIU9KcpmcuzB-w3YJnrY3eM_kmkeaWQlvWq0cU"> -->
+
+
+<style>
+    .title {
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    .header {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+    .highlight {
+        font-weight: 600;
+        color: #4f2cfa;
+    }
+
+    .snitch {
+        width: 100px;
+        height: 100px;
+        line-height: 50px;
+        font-size: 25px;
+        color: white;
+        text-align: center;
+        font-weight: 600;
+        position: absolute;
+        transition-duration: 0s;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+
+    for (let i = 0; i < 50; i++) {
+        var temp = document.createElement('img');
+        temp.setAttribute('src', '/resources/images/snitch.gif');
+        temp.className = "snitch"
+        document.body.appendChild(temp);
+    }
+
+
+    var snitchClick = function (value) {
+        var snitchForm = document.getElementById('snitchForm')
+        var snitchFosnitchValuerm = document.getElementById('snitchValue')
+        snitchValue.value = value
+        snitchForm.submit()
+    }
+
+    window.onload = function () {
+        var btn = document.getElementsByClassName('snitch');
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function () {
+                snitchClick(i);
+            });
+        }
+    };
+
+    var flagText = "d|Wn~{~shz@|~sobc`sesizuxdbkQ"
+
+    var browserWidth = window.innerWidth
+    var browserHeight = window.innerHeight
+
+    var mouseX = null
+    var mouseY = null
+
+    var snitchElementList = document.getElementsByClassName('snitch')
+    var curTop = null
+    var curLeft = null
+
+    var offSetX = 150
+    var offSetY = 350
+
+    window.onmousemove = function (event) {
+
+
+        for (let i = 0; i < snitchElementList.length; i++) {
+
+            var snitchElement = snitchElementList[i]
+
+            // console.log('snitchElement', snitchElement)
+
+            mouseX = event.clientX
+            mouseY = event.clientY
+
+            curTop = snitchElement.style.top
+            curLeft = snitchElement.style.left
+
+            var x = Math.floor((Math.random() * 135791113) % browserHeight)
+            var y = Math.floor((Math.random() * 135791113) % browserWidth)
+
+            snitchElement.style.top = x
+            snitchElement.style.left = y
+        }
+    }
+</script>
+</body>
+</html>
