@@ -23,8 +23,6 @@
     <input type="hidden" id="snitchValue" name="snitchValue">
 </form>
 
-<!-- <img class="snitch" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e769cc80-4c42-4db6-921d-4583430143c8/d173zxk-796d74c2-ac04-4453-8f26-a55a7f8c67c1.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9lNzY5Y2M4MC00YzQyLTRkYjYtOTIxZC00NTgzNDMwMTQzYzgvZDE3M3p4ay03OTZkNzRjMi1hYzA0LTQ0NTMtOGYyNi1hNTVhN2Y4YzY3YzEuZ2lmIn1dXX0.t7cwvsIU9KcpmcuzB-w3YJnrY3eM_kmkeaWQlvWq0cU"> -->
-
 
 <style>
     .title {
@@ -58,6 +56,18 @@
 
 <script>
 
+    var  requestGet = function(number) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                alert(this.responseText);
+            }
+        };
+
+        xhttp.open("GET", `/api/snitch2/?number=${number}`, true);
+        xhttp.send();
+    }
+
     for (let i = 0; i < 50; i++) {
         var temp = document.createElement('img');
         temp.setAttribute('src', '/resources/images/snitch.gif');
@@ -66,11 +76,16 @@
     }
 
 
-    var snitchClick = function (value) {
-        var snitchForm = document.getElementById('snitchForm')
-        var snitchFosnitchValuerm = document.getElementById('snitchValue')
-        snitchValue.value = value
-        snitchForm.submit()
+    var snitchClick = function (number) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(`HTTP GET - 1) ${number} 번째 스니치, 2) 응답결과: ${this.responseText}`)
+            }
+        };
+
+        xhttp.open("GET", `/api/snitch2/?number=${number}`, true);
+        xhttp.send();
     }
 
     window.onload = function () {

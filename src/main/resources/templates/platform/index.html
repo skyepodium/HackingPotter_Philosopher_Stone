@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>해킹포터 - 수색꾼 테스트</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--        <script src="../../static/js/common.js"></script>-->
+        <script src="/resources/js/common.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <p class="title">
+                9와 3/4 승강장
+            </p>
+            <p>
+                저, 호그와트로 가려고하는데요, 9와 3/4 승강장이 어디인가요?
+            </p>
+            <p>
+                응? 티켓에는 9번 승강장이라고 되어있는데!
+            </p>
+            <p>
+                티켓의 번호를 변경해서, 다시 제출해보자
+            </p>
+        </div>
+
+        <div id ="ticket_wrapper">
+<!--            <img id="ticket" src="../../static/images/ticket.png">-->
+            <img id="ticket" src="/resources/images/ticket.png">
+            <div id="platform_wrapper">
+                Platform <span id="platform_number">9</span>
+            </div>
+        </div>
+
+        <div id="submit" onclick="submitTicket()">
+            티켓 제출하기
+        </div>
+
+        <script>
+            let submitTicket = function () {
+                console.log('asf')
+                let platformNumberElement = document.getElementById('platform_number')
+                let number = platformNumberElement.textContent
+
+                let url = '/api/platform/?number=' + number
+                getRequest(url)
+            }
+        </script>
+
+        <style>
+            #submit {
+                width: 700px;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+                color: white;
+                background: peru;
+                cursor: pointer;
+                margin-left:auto;
+                margin-right:auto;
+                font-size: 30px;
+                margin-top: 30px;
+            }
+            #ticket_wrapper {
+                width: 700px;
+                margin-left:auto;
+                margin-right:auto;
+                position: relative;
+            }
+            #ticket {
+                width: inherit;
+            }
+            #platform_wrapper {
+                height: 70px;
+                line-height: 70px;
+                color: peru;
+                text-align: center;
+                font-size: 70px;
+                font-weight: 600;
+                width: 700px;
+                position:absolute; 
+                top: 180px;
+                left:50%; 
+                transform:translateX(-50%);
+            }
+        </style>
+    </body>
+</html>

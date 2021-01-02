@@ -21,4 +21,9 @@ public class MainController {
     public String snitch2() {
         return "/snitch2/index.html";
     }
+
+    @RequestMapping(value="/platform", method = RequestMethod.GET)
+    public String platfrom() {
+        return "/platform/index.html";
+    }
 }
